@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import './components/authentiated_drawer.dart';
-
-
+import './components/authenticated_appbar.dart';
+import './components/unauthenticated_appbar.dart';
 
 void main() => runApp(MyApp());
 
@@ -49,6 +49,8 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
 
+  bool _isAuthenticated = false;
+
   void _incrementCounter() {
     setState(() {
       // This call to setState tells the Flutter framework that something has
@@ -60,6 +62,44 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
+  void _authentication(bool status){
+
+    setState(() {
+
+
+      _isAuthenticated = status;
+
+    });
+
+  }
+
+   Widget _authDrawer(){
+
+    if(_isAuthenticated){
+     return AuthenticatedDrawer();
+
+   }
+   else{
+     return null;
+   }
+
+  }
+
+  Widget _authAppBar(){
+
+
+    if(_isAuthenticated){
+      return AuthenticatedAppBar();
+
+    }
+    else{
+      return UnauthenticatedAppBar();
+    }
+
+
+  }
+
+
   @override
   Widget build(BuildContext context) {
     // This method is rerun every time setState is called, for instance as done
@@ -69,12 +109,8 @@ class _MyHomePageState extends State<MyHomePage> {
     // fast, so that you can just rebuild anything that needs updating rather
     // than having to individually change instances of widgets.
     return Scaffold(
-      appBar: AppBar(
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
-        title: Text(widget.title),
-      ),
-      drawer: AuthenticatedDrawer(),
+      appBar: _authAppBar(),
+      drawer: _authDrawer(),
       body: Center(
         // Center is a layout widget. It takes a single child and positions it
         // in the middle of the parent.
