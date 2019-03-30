@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../pages/learning_feed.dart';
 import '../pages/social_feed.dart';
 
+
 class AuthenticatedDrawer extends StatelessWidget {
   AuthenticatedDrawer({this.title});
 

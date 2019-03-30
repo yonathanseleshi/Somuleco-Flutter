@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class AuthenticatedAppBar extends StatelessWidget {
+class AuthenticatedAppBar extends StatelessWidget implements PreferredSizeWidget{
   AuthenticatedAppBar({this.title});
 
   // Fields in a Widget subclass are always marked "final".
@@ -26,6 +26,10 @@ class AuthenticatedAppBar extends StatelessWidget {
 
     );
   }
+
+  @override
+  // TODO: implement preferredSize
+  Size get preferredSize => null;
 }
 
 
